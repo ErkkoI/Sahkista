@@ -52,6 +52,8 @@ def runMinorityGame(N, m):
 
 if __name__ == '__main__':
 
+    save = False    
+
     n_games = 10
     N_vals = np.array([51, 71, 101, 151, 201, 251])
     m_vals = np.arange(2, 13)
@@ -64,4 +66,5 @@ if __name__ == '__main__':
             for n in range(n_games):
                 sigmas[j, i, n] = runMinorityGame(N, m)
             
-    np.savez('minority_game_results.npz', sigmas=sigmas, N_vals=N_vals, m_vals=m_vals)
+    if save:
+        np.savez('minority_game_results.npz', sigmas=sigmas, N_vals=N_vals, m_vals=m_vals)

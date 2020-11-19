@@ -8,6 +8,8 @@ Created on Thu Nov 19 20:32:28 2020
 import numpy as np
 import matplotlib.pyplot as plt
 
+save = False
+
 data = np.load('minority_game_results.npz')
 sigmas = data['sigmas'] # Shape (|N_vals|, |m_vals|, |n_games|)
 N_vals = data['N_vals']
@@ -38,6 +40,8 @@ fig1 = plot_results(m_vals, sigma_avgs, style='-', xlabel='m', ylabel='Sigma')
 fig2 = plot_results(np.outer(1/N_vals, 2**m_vals), sigma_avgs**2/N_vals[:, np.newaxis], style='--', xlabel='2^m / N', ylabel='Sigma^2 / N')
 fig3 = plot_results(m_vals, sigma_stds, style='--', xlabel='m', ylabel='Standard deviation')
 
-fig1.savefig('sigma_v_m.pdf')
-fig2.savefig('scaling.pdf')
-fig3.savefig('sigma_spread.pdf')
+if save:
+
+    fig1.savefig('sigma_v_m.pdf')
+    fig2.savefig('scaling.pdf')
+    fig3.savefig('sigma_spread.pdf')
