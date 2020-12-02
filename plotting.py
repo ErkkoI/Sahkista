@@ -8,7 +8,7 @@ Created on Thu Nov 19 20:32:28 2020
 import numpy as np
 import matplotlib.pyplot as plt
 
-save = False
+save = True
 
 data = np.load('minority_game_results_new.npz')
 # time_series = data['time_series']
