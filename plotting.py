@@ -29,11 +29,11 @@ def plot_results(x, y, style, xlabel, ylabel, log_axis=False):
     
     if len(x.shape) == 1:
         for j, N in enumerate(N_vals):
-            plt.plot(x, y[j], style, label='N={}'.format(N))
+            plt.plot(x, y[j], style, label=f'N={N}')
             
     elif len(x.shape) == 2:
         for j, N in enumerate(N_vals):
-            plt.plot(x[j], y[j], style, label='N={}'.format(N))
+            plt.plot(x[j], y[j], style, label=f'$N={N}$')
             
     if log_axis:
         plt.xscale('log')
@@ -45,14 +45,14 @@ def plot_results(x, y, style, xlabel, ylabel, log_axis=False):
     plt.grid()
     return fig
 
-fig1 = plot_results(m_vals, sigma_avgs, style='--', xlabel='m', ylabel='Sigma')
+fig1 = plot_results(m_vals, sigma_avgs, style='--', xlabel='$m$', ylabel='$\sigma$')
 fig2 = plot_results(np.outer(1/N_vals, 2**m_vals), sigma_avgs**2/N_vals[:, np.newaxis],
-                    style='--', xlabel='2^m / N', ylabel='Sigma^2 / N', log_axis=True)
+                    style='--', xlabel='$2^m / N$', ylabel='$\sigma^2 / N$', log_axis=True)
 plt.hlines(0.25, 0, 100)
-fig3 = plot_results(m_vals, sigma_stds/N_vals[:, np.newaxis], style='--', xlabel='m', ylabel='Standard deviation / N')
+fig3 = plot_results(m_vals, sigma_stds/N_vals[:, np.newaxis], style='--', xlabel='$m$', ylabel='$\sigma^2 / N$')
 
 fig4 = plot_results(np.outer(1/N_vals, 2**m_vals), np.sqrt(H_avgs),
-             style='--', xlabel='2^m / N', ylabel='H')
+             style='--', xlabel='$2^m / N$', ylabel='$H$')
 plt.xscale('log')
 
 if save:
