@@ -76,8 +76,8 @@ def runMinorityGame(N, m, n_iterations):
 if __name__ == '__main__':
     
     time_series = False
-    p_values = False
-    scaling_results = True
+    p_values = True
+    scaling_results = False
     
     if scaling_results:
 
@@ -107,7 +107,7 @@ if __name__ == '__main__':
                     H_vals[j, i, n] = H
                 
         if save:
-            np.savez('minority_game_results_new.npz', sigmas=sigmas,
+            np.savez('minority_game_results_5000.npz', sigmas=sigmas,
                       N_vals=N_vals, m_vals=m_vals, H_vals=H_vals)
             
     if time_series:
@@ -141,6 +141,6 @@ if __name__ == '__main__':
             plt.bar(np.arange(2**m), p_vals, label='m={}'.format(m))
             plt.ylim([0,1])
             plt.grid()
-            plt.xlabel('mu')
-            plt.ylabel('P(1|mu)')
+            plt.xlabel('$\mu$')
+            plt.ylabel('P(1|$\mu$)')
             plt.legend()
