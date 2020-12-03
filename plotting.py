@@ -22,7 +22,7 @@ sigma_avgs = np.mean(sigmas, axis=2)
 sigma_stds = np.std(sigmas, axis=2)
 H_avgs = np.mean(H_vals, axis=2)
 
-
+alpha_c = 0.3374
 
 def plot_results(x, y, style, xlabel, ylabel, log_axis=False):
     fig = plt.figure()
@@ -49,11 +49,13 @@ fig1 = plot_results(m_vals, sigma_avgs, style='--', xlabel='m', ylabel='Sigma')
 fig2 = plot_results(np.outer(1/N_vals, 2**m_vals), sigma_avgs**2/N_vals[:, np.newaxis],
                     style='--', xlabel='2^m / N', ylabel='Sigma^2 / N', log_axis=True)
 plt.hlines(0.25, 0, 100)
+plt.vlines(alpha_c, 0, 4)
 fig3 = plot_results(m_vals, sigma_stds/N_vals[:, np.newaxis], style='--', xlabel='m', ylabel='Standard deviation / N')
 
 fig4 = plot_results(np.outer(1/N_vals, 2**m_vals), np.sqrt(H_avgs),
-             style='--', xlabel='2^m / N', ylabel='H')
+              style='--', xlabel='2^m / N', ylabel='H')
 plt.xscale('log')
+plt.vlines(alpha_c, 0, 0.5)
 
 if save:
 
